@@ -21,4 +21,4 @@ There are some flexibilities in its pricing plans: single-ride passes, full-day 
 Customers who purchase single-ride or full-day passes are referred to as casual riders. 
 Customers who purchase annual memberships are Cyclistic members. 
 Their finance analysts have concluded that annual members are much more profitable than casual riders. 
-Also, converting casual riders into annual members is their main goal. ![image](https://user-images.githubusercontent.com/63174846/155856556-52b71c67-7ba5-43f9-b0ed-9bbe62066930.png)
+Also, converting casual riders into annual members is their main goal.
