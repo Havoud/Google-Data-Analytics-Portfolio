@@ -15,10 +15,13 @@ Three questions will guide the future marketing program:
 2. Why would casual riders buy Cyclistic annual memberships?
 3. How can Cyclistic use digital media to influence casual riders to become members?
 
-### Asking about Cyclistic
-Cyclistic is a bike-share program based in Chicago that features more than 5,824 bicycles and 692 docking stations. 
-There are some flexibilities in its pricing plans: single-ride passes, full-day passes, and annual memberships. 
-Customers who purchase single-ride or full-day passes are referred to as casual riders. 
-Customers who purchase annual memberships are Cyclistic members. 
-Their finance analysts have concluded that annual members are much more profitable than casual riders. 
-Also, converting casual riders into annual members is their main goal.
+#### Asking about Cyclistic
+* Cyclistic is a bike-share program based in Chicago that features more than 5,824 bicycles and 692 docking stations. 
+* There are some flexibilities in its pricing plans: single-ride passes, full-day passes, and annual memberships. 
+* Customers who purchase single-ride or full-day passes are referred to as casual riders. 
+* Customers who purchase annual memberships are Cyclistic members. 
+* Their finance analysts have concluded that annual members are much more profitable than casual riders. 
+* Also, converting casual riders into annual members is their main goal.
+
+#### What we should do?
+So, in this project we have to find the differences between casual riders and annual members in using Cyclistic bikes. When we understand the differences, we can design a new strategy to convert casual riders to annual members.
