@@ -15,7 +15,7 @@ Three questions will guide the future marketing program:
 2. Why would casual riders buy Cyclistic annual memberships?
 3. How can Cyclistic use digital media to influence casual riders to become members?
 
-#### Asking about Cyclistic
+#### Asking about Cyclistic and explaining the problem
 * Cyclistic is a bike-share program based in Chicago that features more than 5,824 bicycles and 692 docking stations. 
 * There are some flexibilities in its pricing plans: single-ride passes, full-day passes, and annual memberships. 
 * Customers who purchase single-ride or full-day passes are referred to as casual riders. 
@@ -23,5 +23,16 @@ Three questions will guide the future marketing program:
 * Their finance analysts have concluded that annual members are much more profitable than casual riders. 
 * Also, converting casual riders into annual members is their main goal.
 
-#### What we should do?
+#### What should we do?
 So, in this project we have to find the differences between casual riders and annual members in using Cyclistic bikes. When we understand the differences, we can design a new strategy to convert casual riders to annual members.
+
+## 2) Prepare
+In the preparation phase I have collected some information about the data I am going to work with:
+* The datasets are collected by Cyclistic. 
+* They contain Cyclistic’s monthly trip data.
+* I have used the data that happened in 2021 year. 
+* The data contains information about location and time of using City of Chicago’s Divvy bicycle-sharing service.
+* I didn’t find any bias with data.
+* I’ll be using the first-party data. So, it is original, reliable, and cited.
+* This is a public data set.
+* The data has been prepared by Divvy Bikes under this [Data License Agreement](https://www.divvybikes.com/data-license-agreement).
