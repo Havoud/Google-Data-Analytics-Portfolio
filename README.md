@@ -239,6 +239,8 @@ df$day_of_week <- ordered(df$day_of_week, levels=c("Sunday", "Monday", "Tuesday"
 # making a plot from the table and saving it
 ggsave("number of rides by member_casual.png", width=7, height=7)
 ```
+![image](https://user-images.githubusercontent.com/63174846/155890481-f46e6d3b-fea5-4972-9ccd-05dffdeb25ab.png "Daily number of trips in 2021")
+
 5. Calculated the average duration of rides for each day, considering annual members and casual users:
 ```
 df %>% 
@@ -256,6 +258,8 @@ df %>%
     fill = "Member/Casual")
 ggsave(duration of ride by member_casual.png", width=7, height=7)
 ```
+![image](https://user-images.githubusercontent.com/63174846/155890553-9db13b0d-6913-4009-a20d-1c56b3445cdc.png "Daily average of trip duration in 2021")
+
 6. Calculated the statistical summary of data for *rideable_type* variable
 ```
 summary_rideable <- df %>%     
@@ -292,6 +296,8 @@ user_month_rides %>%
 ggsave("The monthly number of trips based on member_casual.png", width=7, height=7)
 
 ```
+![image](https://user-images.githubusercontent.com/63174846/155890593-4d5e6903-0d82-474a-a223-3611254d5f8e.png "The monthly number of trips based on member/casual")
+
 8. Visualized the monthly average duration by Member/Casual
 ```
 user_month_rides %>%
@@ -307,6 +313,8 @@ user_month_rides %>%
   coord_flip()
 ggsave("The monthly average duration based on member_casual.png", width=7, height=7)
 ```
+![image](https://user-images.githubusercontent.com/63174846/155890618-7f7e0a54-1153-4f76-8167-070d775461e5.png "The monthly average duration based on Member/Casual")
+
 9. Created a table of basic information
 ```
 tripdata_merge %>%  
@@ -352,7 +360,7 @@ count_station_user_cord <- count_station_user_cord %>%
 write_csv(count_station_user_cord, "count_station_user_cord.csv", na = "NA", append = FALSE)
 ```
 
-##### P.S.
+##### Outliers
 It is also possible to find some outliers statistically from the dataset and remove them. 
 Then, do the actions mentioned before in analyzing section again with the dataset which has no outliers. 
 Removing outliers from a dataset sometimes needs a confirmation from the project manager.
@@ -361,13 +369,13 @@ Removing outliers from a dataset sometimes needs a confirmation from the project
 # The rides with duration of higher or lower than 85, and 15 percent of the whole data has been removed.
 df %>% 
   df(month) %>%
-  summarize(iqr = IQR(trip_duration),
+  summarize(lmt = IQR(trip_duration),
     high_outliers = quantile[2] + 1.5 * iqr,
     down_outliers = quantile[1] - 1.5 * iqr) %>%
-  select(month, low_outliers, iqr, up_outliers)
-iqr <- IQR(tripdata_merge$trip_duration)
-high_outliers <- quantile[2] + 1.5 * iqr
-down_outliers <- quantile[1] - 1.5 * iqr
+  select(month, down_outliers, iqr, high_outliers)
+lmt <- IQR(df$trip_duration)
+high_outliers <- quantile[2] + 1.5 * lmt
+down_outliers <- quantile[1] - 1.5 * lmt
 df %>%
   group_by(month) %>%
   summarize(total_n = n(),
@@ -377,6 +385,36 @@ df %>%
 
 # remove outliers from dataset
 df_no_outliers <- df %>%
-  filter(trip_duration < up_outliers)
+  filter(trip_duration < high_outliers & trip_duration > down_outliers )
 # Now it is possible to use this dataset instead of our main dataset (df).
 ```
+
+## 5) Share
+The average trip duration in each ride for casual members are more than 2 times higher compared to annual members for each weekday. For example, the day with the most average ride duration on the week is Sunday, which casual members ride ~38 minutes and annual members ride ~16 minutes.
+
+The average trip duration for both members and casuals in weekends (Saturday and Sunday) are higher than the weekdays. Besides, this value for casual members is consistent through Tuesday to Thursday and gets a little higher on Monday and Friday, but for annual members, this value is almost consistent and similar in all of weekdays.
+
+Almost 40 percent of total trip number for casual users has happened on weekends. For annual members the weekdays had higher total trip numbers in compared to weekends. For example, Wednesday has the highest value in all the week.
+
+For casual users, June to September were the months with moth total trip numbers, while for other months that value decreased extremely. For annual members, those months are June to October and value reduction is not as extreme as for the casuals.
+
+The most interesting point in average trip duration for different bike users regarding months was consistent value for annual members during year. It seems that these users have the same trips in all the year and although they could decide to not use the bike in winter, but they would not change their path or time of using. This value for casual users is higher for summer and late spring.
+
+Results shows that there are 848 unique start station names in the data. I also, found the top ten stations which were being used as a start station for the whole rides, with respect to different users. It is possible to see the Tableau dashboard that I have created for top 10 starting to rides Cyclistic stations on 2021 from [here](https://havoud.github.io/Portfolio-for-Cyclistic-/). A regular png picture has been prepared for this report either:
+![image](https://user-images.githubusercontent.com/63174846/155901309-ce670b1c-98e0-43bc-86ec-0b02e6e910f3.png)
+
+
+
+
+## 6) Act
+First, we can have some offers for companies or organization to encourage their employees to activate an annual membership in Cyclistic. Then we can design some campaigns to promote using Cyclictic bikes regularly in order to improving societies health and also saving environment form consuming fossil fuels. 
+
+Regarding the top 10 stations which has been used more than others, it seems that the touristic locations in Chicago are the places with most usage of Cyclistic bikes. We can have more stations in this area and also we can have more bikes. 
+
+Also, I would like to suggest the Cyclistic to collect some more variables in their future data, that could help planners more. For example, they can have some surveys which has the user age, or some questionaries which would ask the users how in which stations they could not find bikes more than others. With respect to the age of users we can find out that is it possible that providing smaller bikes could encourage family members to use bikes together? Maybe if there were some bikes with smaller size, people would use bikes more than before because they can take their children to school and then they can go for work.
+
+In my idea, before June it would be a good time to have a campaign with some discount rates for absorbing casual members to be a annual member.
+
+As I have mentioned in sharing phase, the average trip duration for annual members during the different month of year does not change and it is a consistent value. It seems that if we can encourage people to use bikes for riding to their jobs, it would be more likely that they will use the bikes in the whole year. In other word, if we can eliminate some barriers like long distances from residential areas to bike stations, we could encourage people to use the bikes as an annual member for work trip destinations.
+
+
