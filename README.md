@@ -394,11 +394,26 @@ The average trip duration in each ride for casual members are more than 2 times 
 
 The average trip duration for both members and casuals in weekends (Saturday and Sunday) are higher than the weekdays. Besides, this value for casual members is consistent through Tuesday to Thursday and gets a little higher on Monday and Friday, but for annual members, this value is almost consistent and similar in all of weekdays.
 
-Almost 40 percent of total trip number for casual users has happened on weekends. For annual members the weekdays had higher total trip numbers in compared to weekends. For example, Wednesday has the highest value in all the week.
+For comparing number of rides on weekdays and weekends for both annual members and casual users I have prepared a table named count_Weekend:
+```
+count_duration_weekend <- count_duration_user_day %>% 
+    group_by(member_casual) %>% 
+    summarise(weekend_sum = sum(number_of_rides[weekday == 'Sun' | weekday == 'Sat' ]),
+              weekday_sum =sum(number_of_rides[weekday == 'Mon' | weekday == 'Tue' | 
+              weekday == 'Wed' | weekday == 'Fri' | weekday == 'Thu' ]))
+```
+It's result would be:
 
-For casual users, June to September were the months with moth total trip numbers, while for other months that value decreased extremely. For annual members, those months are June to October and value reduction is not as extreme as for the casuals.
+| member_casual | weekend_sum | weekday_sum |
+|:-------------:|:-----------:|:-----------:|
+| casual        |  862668     |  1164011    |
+| member        |  657027     |  1843953    |
+ 
+Almost 43 percent of total rides for casual users has happened on weekends. For annual members the weekdays had higher total trip numbers in compared to weekends. For example, weekends had only 26 percent of member's rides. Also, highest total rides for casual users is Wednesday, but for members it is Saturday.
 
-The most interesting point in average trip duration for different bike users regarding months was consistent value for annual members during year. It seems that these users have the same trips in all the year and although they could decide to not use the bike in winter, but they would not change their path or time of using. This value for casual users is higher for summer and late spring.
+For casual users, June to September were the months with most total trip numbers, while for other months that value decreased extremely. For annual members, peak months are June to October and value reduction is not as extreme as for the casuals.
+
+The most interesting point in average **ride duration** for different bike users regarding months was consistent value for annual members during year. It seems that these users have the same trips in all the year and although they could decide to not use the bike in winter, but they would not change their path or time of using. This value for casual users is higher for summer and late spring.
 
 Results shows that there are 848 unique start station names in the data. I also, found the top ten stations which were being used as a start station for the whole rides, with respect to different users. It is possible to see the Tableau dashboard that I have created for top 10 starting to rides Cyclistic stations on 2021 from [here](https://havoud.github.io/Portfolio-for-Cyclistic-/). A regular png picture has been prepared for this report either:
 ![image](https://user-images.githubusercontent.com/63174846/155901309-ce670b1c-98e0-43bc-86ec-0b02e6e910f3.png)
@@ -411,10 +426,10 @@ First, we can have some offers for companies or organization to encourage their 
 
 Regarding the top 10 stations which has been used more than others, it seems that the touristic locations in Chicago are the places with most usage of Cyclistic bikes. We can have more stations in this area and also we can have more bikes. 
 
-Also, I would like to suggest the Cyclistic to collect some more variables in their future data, that could help planners more. For example, they can have some surveys which has the user age, or some questionaries which would ask the users how in which stations they could not find bikes more than others. With respect to the age of users we can find out that is it possible that providing smaller bikes could encourage family members to use bikes together? Maybe if there were some bikes with smaller size, people would use bikes more than before because they can take their children to school and then they can go for work.
+Also, I would like to suggest the Cyclistic to collect some more variables in their future data, that could help planners more. For example, they can have some surveys which has the user age, or some questionaries which would ask the users: **in which stations they could not find bikes more than others? and when?** With respect to the age of users we can find out which is it possible that providing smaller bikes could encourage family members to use bikes together? Maybe if there were some bikes with smaller size, people would use bikes more than before because they can take their children to school and then they can go for work. In my idea, there are some people who would choose to cycle to their jobs in the whole year if they know their children would have a proper school service. 
 
-In my idea, before June it would be a good time to have a campaign with some discount rates for absorbing casual members to be a annual member.
+I believe that end of May and first of June it would be a good time to have a campaign with some discount rates for absorbing casual members to be an annual member. Also, we can target students for enrollment at this period. Their school willbe closed and they are free for using bikes. 
 
-As I have mentioned in sharing phase, the average trip duration for annual members during the different month of year does not change and it is a consistent value. It seems that if we can encourage people to use bikes for riding to their jobs, it would be more likely that they will use the bikes in the whole year. In other word, if we can eliminate some barriers like long distances from residential areas to bike stations, we could encourage people to use the bikes as an annual member for work trip destinations.
+As I have mentioned in sharing phase, the average trip duration for annual members during the different month of year does not change and it is a consistent value. It seems that if we can encourage people to use bikes for riding to their jobs, it would be more likely that they will use the bikes in the whole year. In other word, if we can eliminate some barriers like long distances from residential areas to bike stations, we could encourage people to use the bikes as an annual member for work trip destinations. Also, we have to realize which locations are the places with highes attraction in work trips. Then we can provide some new stations in there.
 
 
